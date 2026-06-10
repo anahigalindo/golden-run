@@ -1,66 +1,249 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🌸 Golden Run — API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> **ES** | [EN below](#-golden-run--api-1)
 
-## About Laravel
+Golden Run nació de combinar tres de mis pasiones: correr, la música de One Direction y sus integrantes como solistas, y mis perritos Odin y Toby 🐾
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+El nombre viene de *Golden*, canción de Harry Styles de su disco Fine Line — el disco que me presentó su música en solitario 💛
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+La idea es simple pero real: cuando entrenas, la zona de frecuencia cardíaca en la que estás define tu esfuerzo. ¿Por qué no dejar que esa zona también defina qué artista te acompaña? Cada zona tiene un artista asignado según el BPM real de sus canciones.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🎶 Zonas y artistas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+| Zona | FC | BPM | Artista |
+|------|----|-----|---------|
+| Z1 · Recuperación | 50-60% | 60-80 | Niall Horan |
+| Z2 · Base aeróbica | 60-70% | 80-100 | Louis Tomlinson |
+| Z3 · Tempo | 70-80% | 100-120 | One Direction |
+| Z4 · Umbral | 80-90% | 120-140 | Harry Styles |
+| Z5 · Máximo | 90-100% | 140-160 | Zayn / Liam Payne |
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## ✨ Features
 
-## Laravel Sponsors
+- 🔐 **Autenticación segura** con Laravel Sanctum
+- 🏃‍♀️ **Registro de entrenamientos** — zona, distancia, duración, FC promedio y fecha
+- 🐾 **Con o sin perrito** — porque Odin y Toby también merecen su registro
+- 🎵 **Recomendación musical por zona** — canciones con BPM real matcheado a tu esfuerzo
+- 📊 **Estadísticas personales** — zona favorita, artista del momento, km totales y más
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🛠️ Tech Stack
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- PHP 8.x + **Laravel 11**
+- **MySQL**
+- **Laravel Sanctum** — autenticación por tokens
+- RESTful API
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🔌 API Endpoints
 
-## Code of Conduct
+| Método | Ruta | Descripción | Auth |
+|--------|------|-------------|------|
+| POST | `/api/register` | Crear cuenta | No |
+| POST | `/api/login` | Iniciar sesión | No |
+| POST | `/api/logout` | Cerrar sesión | ✅ |
+| GET | `/api/songs/{zone}` | Canciones por zona | ✅ |
+| GET | `/api/songs/{zone}/random` | Canción aleatoria por zona | ✅ |
+| GET | `/api/runs` | Historial de entrenamientos | ✅ |
+| POST | `/api/runs` | Registrar entrenamiento | ✅ |
+| GET | `/api/stats` | Estadísticas del usuario | ✅ |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 🚀 Instalación
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Requisitos
+- PHP 8.1+
+- Composer
+- MySQL
 
-## License
+```bash
+# Clonar el repositorio
+git clone https://github.com/anahigalindo/golden-run.git
+cd golden-run
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Instalar dependencias
+composer install
+
+# Configurar variables de entorno
+cp .env.example .env
+php artisan key:generate
+
+# Configurar base de datos en .env
+DB_CONNECTION=mysql
+DB_DATABASE=golden_run
+DB_USERNAME=root
+DB_PASSWORD=tu_password
+
+# Correr migraciones y seeders
+php artisan migrate
+php artisan db:seed
+
+# Iniciar servidor
+php artisan serve
+```
+
+---
+
+## 📁 Estructura
+
+```
+app/
+├── Http/Controllers/
+│   ├── AuthController.php
+│   ├── RunController.php
+│   └── SongController.php
+└── Models/
+    ├── User.php
+    ├── Run.php
+    └── Song.php
+database/
+├── migrations/
+└── seeders/
+    └── SongSeeder.php   # 15 canciones con BPM real
+routes/
+└── api.php
+```
+
+---
+
+## 👩‍💻 Sobre este proyecto
+
+Tengo más de 6 años de experiencia con Laravel trabajando en sistemas clínicos de gran escala. Golden Run lo construí como proyecto personal para demostrar esa experiencia en un contexto diferente — uno que incluya mis gustos personales.
+
+El frontend en React está en su propio repositorio: [golden-run-frontend](https://github.com/anahigalindo/golden-run-frontend)
+
+---
+
+---
+
+# 🌸 Golden Run — API
+
+> **EN** | [ES arriba](#-golden-run--api)
+
+Golden Run was born from combining three of my passions: running, the music of One Direction and their solo careers, and my dogs Odin and Toby 🐾
+
+The name comes from *Golden*, a Harry Styles song from his Fine Line album — the album that introduced me to his solo music 💛
+
+The concept is simple but real: when you train, your heart rate zone defines your effort level. So why not let that zone also define which artist accompanies you? Each zone is assigned an artist based on the real BPM of their songs.
+
+---
+
+## 🎶 Zones & Artists
+
+| Zone | HR | BPM | Artist |
+|------|----|-----|--------|
+| Z1 · Recovery | 50-60% | 60-80 | Niall Horan |
+| Z2 · Aerobic Base | 60-70% | 80-100 | Louis Tomlinson |
+| Z3 · Tempo | 70-80% | 100-120 | One Direction |
+| Z4 · Threshold | 80-90% | 120-140 | Harry Styles |
+| Z5 · Maximum | 90-100% | 140-160 | Zayn / Liam Payne |
+
+---
+
+## ✨ Features
+
+- 🔐 **Secure authentication** with Laravel Sanctum
+- 🏃‍♀️ **Workout logging** — zone, distance, duration, average heart rate and date
+- 🐾 **With or without your dog** — because Odin and Toby deserve their own log
+- 🎵 **Zone-based music recommendations** — real BPM matched to your effort level
+- 📊 **Personal stats** — favorite zone, top artist, total km and more
+
+---
+
+## 🛠️ Tech Stack
+
+- PHP 8.x + **Laravel 11**
+- **MySQL**
+- **Laravel Sanctum** — token-based authentication
+- RESTful API
+
+---
+
+## 🔌 API Endpoints
+
+| Method | Route | Description | Auth |
+|--------|-------|-------------|------|
+| POST | `/api/register` | Create account | No |
+| POST | `/api/login` | Log in | No |
+| POST | `/api/logout` | Log out | ✅ |
+| GET | `/api/songs/{zone}` | Songs by zone | ✅ |
+| GET | `/api/songs/{zone}/random` | Random song by zone | ✅ |
+| GET | `/api/runs` | Workout history | ✅ |
+| POST | `/api/runs` | Log workout | ✅ |
+| GET | `/api/stats` | User statistics | ✅ |
+
+---
+
+## 🚀 Installation
+
+### Requirements
+- PHP 8.1+
+- Composer
+- MySQL
+
+```bash
+# Clone the repository
+git clone https://github.com/anahigalindo/golden-run.git
+cd golden-run
+
+# Install dependencies
+composer install
+
+# Set up environment variables
+cp .env.example .env
+php artisan key:generate
+
+# Configure database in .env
+DB_CONNECTION=mysql
+DB_DATABASE=golden_run
+DB_USERNAME=root
+DB_PASSWORD=your_password
+
+# Run migrations and seeders
+php artisan migrate
+php artisan db:seed
+
+# Start server
+php artisan serve
+```
+
+---
+
+## 📁 Project Structure
+
+```
+app/
+├── Http/Controllers/
+│   ├── AuthController.php
+│   ├── RunController.php
+│   └── SongController.php
+└── Models/
+    ├── User.php
+    ├── Run.php
+    └── Song.php
+database/
+├── migrations/
+└── seeders/
+    └── SongSeeder.php   # 15 songs with real BPM data
+routes/
+└── api.php
+```
+
+---
+
+## 👩‍💻 About this project
+
+I have 6+ years of Laravel experience working on large-scale clinical management systems. I built Golden Run as a personal project to showcase that experience in a different context — one that includes my personal interests.
+
+The React frontend lives in its own repository: [golden-run-frontend](https://github.com/anahigalindo/golden-run-frontend)
+
+---
+
+*For Odin and Toby 🐾 — and for Harry, whose Golden started all of this 💛*
